@@ -32,7 +32,8 @@ export class AppComponent {
 
   onInput() {
     if (this.currentPeopleId != null && this.currentPeopleId | 0) {
-      this.swapi.getPeopleFromId(this.currentPeopleId)
+      this.swapi
+        .getPeopleFromId(this.currentPeopleId)
         .then(p => {
           this.currentPeople = p;
 
@@ -43,6 +44,25 @@ export class AppComponent {
         });
 
       console.log("AppComponent.ngOnInit: end", this.currentPeople);
+    }
+  }
+
+  piu() {
+    this.currentPeopleId++;
+    this.swapi
+      .getPeopleFromId(this.currentPeopleId)
+      .then(p => (this.currentPeople = p))
+      .catch(err => console.error(err));
+  }
+  meno() {
+    if (this.currentPeopleId < 1) {
+      console.log("Errore");
+    } else {
+      this.currentPeopleId--;
+      this.swapi
+        .getPeopleFromId(this.currentPeopleId)
+        .then(p => (this.currentPeople = p))
+        .catch(err => console.error(err));
     }
   }
 }

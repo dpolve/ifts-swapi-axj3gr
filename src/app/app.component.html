@@ -3,12 +3,18 @@
 Personaggio di Star Wars:
 <input type="text" [(ngModel)]="currentPeopleId" (input)="onInput()">
 </p>
-<p> TODO 1: inserire qui 2 pulsanti [+] [-] per aumentare o diminuire in automatico il numero dentro l'input text</p>
+<button
+(click)="piu()">+</button> 
+<button
+(click)="meno()">-</button>
 
 <div *ngIf="currentPeople != null">
 Nome : {{ currentPeople.name }}
 
+
+</div>
+
+<hr>
 TODO 2: aggiungere anche la stampa di altri attributi...
 
 TODO 3: aggiungere anche la stampa dei film in cui appare il personaggio
-</div>
