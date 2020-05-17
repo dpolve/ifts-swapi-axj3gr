@@ -1,15 +1,14 @@
-
 <p>
-Personaggio di Star Wars:
-<input type="text" [(ngModel)]="currentPeopleId" (input)="onInput()">
-</p>
-<button
-(click)="piu()">+</button> 
-<button
+	Personaggio di Star Wars:
+	<input type="text" [(ngModel)]="currentPeopleId" (input)="onInput()">
+	<button
+(click)="piu()">+</button>
+	<button
 (click)="meno()">-</button>
+</p>
 
 <div *ngIf="currentPeople != null">
-Nome : {{ currentPeople.name }}
+	Nome : {{ currentPeople.name }}
 
 
 </div>

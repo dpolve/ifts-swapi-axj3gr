@@ -55,7 +55,7 @@ export class AppComponent {
       .catch(err => console.error(err));
   }
   meno() {
-    if (this.currentPeopleId < 1) {
+    if (this.currentPeopleId <= 1) {
       console.log("Errore");
     } else {
       this.currentPeopleId--;
