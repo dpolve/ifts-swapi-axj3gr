@@ -1,4 +1,4 @@
-export class People {
+export class Character {
   name: string;
   height: string;
   mass: string;
@@ -12,6 +12,23 @@ export class People {
   species: string[];
   vehicles: string[];
   starships: string[];
+  created: string;
+  edited: string;
+  url: string;
+}
+
+export class Film {
+  title: string;
+  episode_id: number;
+  opening_crawl: string;
+  director: string;
+  producer: string;
+  release_date: string;
+  characters: string[];
+  planets: string[];
+  starships: string[];
+  vehicles: string[];
+  species: string[];
   created: string;
   edited: string;
   url: string;

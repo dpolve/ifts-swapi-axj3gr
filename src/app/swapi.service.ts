@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { People } from './swapi.model';
+import { Character, Film } from './swapi.model';
 
 @Injectable()
 export class SwapiService {
@@ -8,18 +8,35 @@ export class SwapiService {
 
   constructor(private http: HttpClient) { }
 
-  getBaseUrl(){
+
+  getBaseUrl() {
     return this.baseUrl;
   }
 
-  getPeopleFromId(id: number): Promise<People>{
+  //
+  // Character
+  //
+  getCharacterFromId(id: number): Promise<Character> {
     let url = this.baseUrl + '/people/' + id + '/';
-    return this.getPeopleFromUrl(url);
+    return this.getCharacterFromUrl(url);
   }
 
-  getPeopleFromUrl(url: string): Promise<People>{
-    return this.http.get<People>(url).toPromise();
+  getCharacterFromUrl(url: string): Promise<Character> {
+    url = url.replace('http://', 'https://');
+    return this.http.get<Character>(url).toPromise();
   }
 
-  
+
+  //
+  // Film
+  //
+  getFilmFromId(id: number): Promise<Film> {
+    let url = this.baseUrl + '/films/' + id + '/';
+    return this.getFilmFromUrl(url);
+  }
+
+  getFilmFromUrl(url: string): Promise<Film> {
+    url = url.replace('http://', 'https://');
+    return this.http.get<Film>(url).toPromise();
+  }
 }

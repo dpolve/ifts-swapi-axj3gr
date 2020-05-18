@@ -1,15 +1,25 @@
 <p>
 	Personaggio di Star Wars:
-	<input type="text" [(ngModel)]="currentPeopleId" (input)="onInput()">
+	<input type="text" [(ngModel)]="currentCharacterId" (input)="onInput()">
 	<button
-(click)="piu()">+</button>
+(click)="onPiu()">+</button>
 	<button
-(click)="meno()">-</button>
+(click)="onMeno()">-</button>
 </p>
 
-<div *ngIf="currentPeople != null">
-	Nome : {{ currentPeople.name }}
+<div class="mt-3" *ngIf="currentCharacter != null">
+  Nome: <b>{{ currentCharacter.name }}</b> <br>
+  Genere: {{ currentCharacter.gender }} <br>
+  Anno nascita: {{ currentCharacter.birth_year }} <br>
+  Colore occhi: {{ currentCharacter.eye_color }} <br>
+  Altezza: {{ currentCharacter.height }} <br>
 
+  Films:
+  <ul>
+    <!-- li *ngFor="let f of currentCharacterFilmList">Ep. {{f.episode_id}} - {{ f.title }}</li -->
+    <li *ngFor="let f of currentCharacter.films">
+        {{ f }}</li>
+  </ul>
 
 </div>
 
