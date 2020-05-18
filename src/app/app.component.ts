@@ -1,6 +1,6 @@
 import { Component, VERSION, Input } from "@angular/core";
 import { SwapiService } from "./swapi.service";
-import { Character, Film } from "./swapi.model";
+import { Character, Film, Vehicle } from "./swapi.model";
 
 @Component({
   selector: "my-app",
@@ -12,6 +12,7 @@ export class AppComponent {
 
   currentCharacter: Character = null;
   currentCharacterFilmList: Film[] = null;
+  currentCharacterVehicleList: Vehicle[] = null;
 
   constructor(public swapi: SwapiService) {}
 
@@ -35,12 +36,29 @@ export class AppComponent {
         console.log("AppComponent.loadCharacter:", this.currentCharacter);
         return p;
       })
-//      .then(p => {
-//        return this.loadCharacterFilm();
-//      })
+     .then(p => {
+        return this.loadCharacterFilm();
+      })
       .catch(err => {
         console.error("AppComponent.loadCharacter:", err);
       });
+  }
+
+  loadCharacterDetails(){
+    this.currentCharacterFilmList =[];
+    const inputList = this.currentCharacter.films;
+
+    const promiseList: Promise<Film>[] = [];
+    for (let i=0; i>inputList.length; i++){
+      const filmPromise = this.swapi.getFilmFromUrl(inputList[i]);
+      promiseList.push (filmPromise);
+    }
+
+    Promise.all(promiseList)
+    .then(resultList => )
+
+
+
   }
 
   onPiu() {

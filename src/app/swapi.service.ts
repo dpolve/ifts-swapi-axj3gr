@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Character, Film } from './swapi.model';
+import { Character, Film, Vehicle } from './swapi.model';
 
 @Injectable()
 export class SwapiService {
@@ -39,4 +39,18 @@ export class SwapiService {
     url = url.replace('http://', 'https://');
     return this.http.get<Film>(url).toPromise();
   }
+
+    //
+  // Film
+  //
+  getVehicleFromId(id: number): Promise<Vehicle> {
+    let url = this.baseUrl + '/Vehicles/' + id + '/';
+    return this.getVehicleFromUrl(url);
+  }
+
+  getVehicleFromUrl(url: string): Promise<Vehicle> {
+    url = url.replace('http://', 'https://');
+    return this.http.get<Vehicle>(url).toPromise();
+  }
+
 }
